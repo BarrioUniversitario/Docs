@@ -1,0 +1,57 @@
+---
+title: CoreBau
+description: Documentación del monorepo CoreBau — Paper + Velocity, módulos unificados.
+template: splash
+hero:
+  tagline: Un repositorio, un build, dos artefactos. CoreBau unifica Board, Selector, Lobby, Baúl (con Pets) y NPC en un solo plugin de Paper, y Core para Velocity.
+  actions:
+    - text: Arquitectura
+      link: /es/introduccion/arquitectura/
+      icon: right-arrow
+      variant: primary
+    - text: Permisos & Placeholders
+      link: /es/permisos/listado/
+      icon: external
+    - text: Ver en GitHub
+      link: https://github.com/xgamerscl/CoreBau
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## ¿Qué encontrarás aquí?
+
+<CardGrid stagger>
+  <Card title="Módulos" icon="puzzle">
+    Documentación de cada módulo: Board, Selector, Lobby, Baúl (+ Pets embebidos),
+    NPC, Perfil y el Core de Velocity.
+  </Card>
+  <Card title="Permisos & Placeholders" icon="setting">
+    Listado completo de permisos por módulo y placeholders PAPI nativos
+    (`%baul_*%`, `%board_*%`, `%npc_*%`, `%profile_*%`, `%BetterPets_*%`).
+  </Card>
+  <Card title="Glifos / Fuentes custom" icon="seti:font">
+    Cómo integrar glifos con **ItemsAdder** y **Nexo Engine** en 1.21.11
+    para usarlos en boards, GUIs, NPCs y cosméticos. Ve a
+    [Glifos](/es/glifos/overview/).
+  </Card>
+  <Card title="Implementación" icon="open-book">
+    Cómo se hizo el monorepo, dos estilos de portar plugins, buenas prácticas
+    y ejemplos para añadir módulos nuevos a futuro.
+  </Card>
+  <Card title="Compilar" icon="seti:powershell">
+    Gradle (JDK 21), tareas por módulo, shadowJar/relocations y cómo iterar
+    cambios sin romper datos guardados.
+  </Card>
+  <Card title="Arquitectura" icon="seti:config">
+    Paper backend vs Velocity proxy, canales `serverconnector:main` y
+    `baul:sync`, y por qué hay dos `.jar` y no uno.
+  </Card>
+</CardGrid>
+
+## Versión soportada
+
+- **Minecraft:** Paper 1.21.x (apuntado a `api-version: '1.21'`)
+- **Java:** JDK 21
+- **Velocity:** rama estable compatible con los canales de plugin messaging usados.
