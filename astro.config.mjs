@@ -17,15 +17,37 @@ export default defineConfig({
         replacesTitle: true,
       },
       favicon: '/favicon.png',
+      customCss: ['./src/styles/custom.css'],
+      head: [
+        {
+          tag: 'link',
+          attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        },
+        {
+          tag: 'link',
+          attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: { name: 'theme-color', content: '#0f1217' },
+        },
+      ],
       defaultLocale: 'es',
       locales: {
         es: { label: 'Español', lang: 'es' },
       },
       social: {
-        github: 'https://github.com/xgamerscl/CoreBau',
+        github: 'https://github.com/BarrioUniversitario',
       },
       editLink: {
-        baseUrl: 'https://github.com/xgamerscl/CoreBau/edit/main/docs/',
+        baseUrl: 'https://github.com/BarrioUniversitario/Docs/edit/main/',
       },
       lastUpdated: true,
       sidebar: [

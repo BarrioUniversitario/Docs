@@ -1,0 +1,230 @@
+/* Barrio Universitario — Starlight theme overrides
+   Inspired by docs.papermc.io: dense type, warm accent, soft surfaces. */
+
+:root {
+  --bu-orange-50:  #fff5ec;
+  --bu-orange-100: #ffe3c8;
+  --bu-orange-200: #ffc488;
+  --bu-orange-300: #ff9f44;
+  --bu-orange-400: #f5811f;
+  --bu-orange-500: #e26a0a;
+  --bu-orange-600: #b95208;
+  --bu-orange-700: #8f3e07;
+
+  --bu-brown-50:  #f7f2ee;
+  --bu-brown-100: #ebdfd2;
+  --bu-brown-200: #c9b29a;
+  --bu-brown-300: #9b7a5a;
+  --bu-brown-400: #6e5238;
+  --bu-brown-500: #4a3624;
+  --bu-brown-600: #2f2216;
+  --bu-brown-700: #1d140c;
+
+  --sl-font: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ---------- Dark theme (default look à la PaperMC) ---------- */
+:root[data-theme='dark'] {
+  --sl-color-accent-low:  #3a1e05;
+  --sl-color-accent:      var(--bu-orange-400);
+  --sl-color-accent-high: var(--bu-orange-200);
+
+  --sl-color-white:    #fff;
+  --sl-color-gray-1:   #eef0f3;
+  --sl-color-gray-2:   #c5c8cf;
+  --sl-color-gray-3:   #8b919b;
+  --sl-color-gray-4:   #545a64;
+  --sl-color-gray-5:   #2c313a;
+  --sl-color-gray-6:   #1d2128;
+  --sl-color-black:    #14171c;
+
+  --sl-color-bg:           #0f1217;
+  --sl-color-bg-nav:       #14171ccc;
+  --sl-color-bg-sidebar:   #14171c;
+  --sl-color-bg-inline-code: #1d2128;
+  --sl-color-bg-accent:    var(--bu-orange-400);
+
+  --sl-color-text:         #e6e8ec;
+  --sl-color-text-accent:  var(--bu-orange-300);
+  --sl-color-text-invert:  #14171c;
+
+  --sl-color-hairline:        #232831;
+  --sl-color-hairline-light:  #1b1f26;
+  --sl-color-hairline-shade:  #1b1f26;
+}
+
+/* ---------- Light theme ---------- */
+:root[data-theme='light'] {
+  --sl-color-accent-low:  var(--bu-orange-50);
+  --sl-color-accent:      var(--bu-orange-500);
+  --sl-color-accent-high: var(--bu-orange-700);
+
+  --sl-color-text:         #1d140c;
+  --sl-color-text-accent:  var(--bu-orange-600);
+
+  --sl-color-bg:           #fbfaf7;
+  --sl-color-bg-nav:       #ffffffcc;
+  --sl-color-bg-sidebar:   #faf6f1;
+  --sl-color-bg-inline-code: #f1ece4;
+  --sl-color-hairline:     #ece3d6;
+  --sl-color-hairline-light:#f3ece0;
+}
+
+/* ---------- Global polish ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  letter-spacing: -0.005em;
+}
+
+/* Header — translucent like PaperMC */
+.header {
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  background-color: var(--sl-color-bg-nav);
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+/* Logo bigger & crisp */
+.site-title img {
+  height: 2.25rem !important;
+  width: auto !important;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+}
+
+/* Sidebar links — tighter */
+starlight-sidebar-state-persist a,
+.sidebar-content a {
+  border-radius: 6px;
+}
+
+starlight-sidebar-state-persist a[aria-current='page'],
+.sidebar-content a[aria-current='page'] {
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--sl-color-accent) 22%, transparent),
+    transparent);
+  color: var(--sl-color-text-accent);
+  font-weight: 600;
+}
+
+/* Headings — tighter tracking */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Inline code chips */
+:not(pre) > code {
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 6px;
+  font-size: 0.92em;
+}
+
+/* Code blocks — softer */
+.expressive-code .frame {
+  border-radius: 12px !important;
+  box-shadow: 0 1px 0 0 var(--sl-color-hairline),
+              0 18px 40px -20px rgba(0,0,0,.35);
+}
+
+/* Tables — match PaperMC */
+.sl-markdown-content table {
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.sl-markdown-content th {
+  background: var(--sl-color-bg-sidebar);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.sl-markdown-content tr + tr td {
+  border-top: 1px solid var(--sl-color-hairline-light);
+}
+
+/* Cards — lift on hover */
+.card {
+  border: 1px solid var(--sl-color-hairline) !important;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--sl-color-bg-sidebar) 80%, transparent) 0%,
+    var(--sl-color-bg) 100%) !important;
+  border-radius: 14px !important;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--sl-color-accent) 60%, var(--sl-color-hairline));
+  box-shadow: 0 18px 40px -22px color-mix(in srgb, var(--sl-color-accent) 50%, transparent);
+}
+.card .icon {
+  color: var(--sl-color-accent);
+}
+
+/* Hero — gradient + radial glow */
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(2.5rem, 6vw, 5rem) !important;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -10% -20% auto -20%;
+  height: 120%;
+  z-index: -1;
+  background:
+    radial-gradient(60% 60% at 20% 0%,
+      color-mix(in srgb, var(--bu-orange-400) 22%, transparent) 0%,
+      transparent 60%),
+    radial-gradient(50% 60% at 90% 20%,
+      color-mix(in srgb, var(--bu-brown-300) 18%, transparent) 0%,
+      transparent 65%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.hero h1 {
+  background: linear-gradient(180deg,
+    var(--sl-color-white) 0%,
+    color-mix(in srgb, var(--sl-color-text) 70%, transparent) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .tagline {
+  color: color-mix(in srgb, var(--sl-color-text) 80%, transparent);
+  max-width: 56ch;
+}
+.hero img {
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,.45));
+}
+
+/* Hero buttons */
+.hero .actions a[data-variant='primary'] {
+  background: linear-gradient(180deg, var(--bu-orange-300), var(--bu-orange-500));
+  border: none;
+  color: #14171c;
+  font-weight: 600;
+  box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--bu-orange-400) 70%, transparent);
+}
+.hero .actions a[data-variant='primary']:hover {
+  filter: brightness(1.05);
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in srgb, var(--sl-color-accent) 35%, transparent);
+  color: var(--sl-color-white);
+}
+
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sl-color-gray-5) transparent;
+}
